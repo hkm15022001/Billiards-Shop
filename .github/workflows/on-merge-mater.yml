@@ -1,0 +1,132 @@
+name: Start CI/CD on merge code to branch master
+'on':
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_deploy_server_app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v2
+
+      # - name: 💿 NodeJs set up
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '14'
+
+      # - name: 💫 Run unit test on server app
+      #   working-directory: server
+      #   env:
+      #     CI: false
+      #     NODE_OPTIONS: '--max-old-space-size=8192'
+      #   run: |
+      #     set -x
+      #     npm ci
+      #     npm test
+
+      - name: 🚀 Deploy Server API to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'api-mobile7076'
+          heroku_email: 'quockhanhdev@gmail.com'
+
+  build_and_deploy_client_app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v2
+
+      - name: 💿 NodeJs set up
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: ⭐ Build Client app
+        working-directory: client
+        env:
+          CI: false
+          NODE_OPTIONS: '--max-old-space-size=8192'
+          REACT_APP_API_BASE_URL: ${{ secrets.REACT_APP_API_BASE_URL }}
+          REACT_APP_FIREBASE_CONFIG: ${{ secrets.REACT_APP_FIREBASE_CONFIG }}
+          REACT_APP_FPT_RELATED_ITEM_ID: ${{ secrets.REACT_APP_FPT_RELATED_ITEM_ID }}
+          REACT_APP_FPT_RELATED_ITEM_KEY: ${{ secrets.REACT_APP_FPT_RELATED_ITEM_KEY }}
+          REACT_APP_FPT_USER_BEHAVIOR_ID: ${{ secrets.REACT_APP_FPT_USER_BEHAVIOR_ID }}
+          REACT_APP_FPT_USER_BEHAVIOR_KEY: ${{ secrets.REACT_APP_FPT_USER_BEHAVIOR_KEY }}
+        run: |
+          set -x
+          npm ci
+          npm run build
+
+      - name: ↗️ Archive client build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: ./client/build
+
+      - name: ↙️ Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
+
+      - name: 👀 Display structure of folder to deploy
+        run: ls -R
+        working-directory: build
+
+      - name: 🚀 Deploy Client app to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MERN_ECOMMERCE_B848D }}'
+          channelId: live
+          projectId: mern-ecommerce-b848d
+
+  # build_and_deploy_chat_bot:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: 🛎️ Checkout
+  #       uses: actions/checkout@v2
+
+  #     - name: 💿 Set up Python 3.8
+  #       uses: actions/setup-python@v2
+  #       with:
+  #         python-version: 3.8
+
+  #     - name: 💫 Train Rasa model
+  #       working-directory: rasa-chatbot
+  #       run: |
+  #         python3.8 -m venv env
+  #         source env/bin/activate
+  #         python3.8 -m pip install --upgrade pip
+  #         pip3 install -r requirements.txt
+  #         rasa train
+  #         deactivate
+  #         rm -rf ./env
+  #         rm -rf ./.rasa
+
+  #     - name: ↗️ Archive chatbot artifact
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: rasa-chatbot-with-models
+  #         path: ./rasa-chatbot
+
+  #     - name: ↙️ Download chatbot artifact
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: rasa-chatbot-with-models
+  #         path: rasa-chatbot-with-models
+
+  #     - name: 👀 Display structure of folder to deploy
+  #       run: ls -R
+  #       working-directory: rasa-chatbot-with-models
+
+  #     - name: 🚀 Deploy Rasa chatbot to Heroku
+  #       uses: akhileshns/heroku-deploy@v3.12.12
+  #       with:
+  #         appdir: rasa-chatbot-with-models
+  #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+  #         heroku_app_name: 'rasa-hkmobile'
+  #         heroku_email: 'quockhanhdev@gmail.com'
