@@ -1,6 +1,6 @@
 // material
 import { Stack, Button, Divider, Typography } from '@material-ui/core';
-import { GoogleLogin } from 'react-google-login';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 // hooks
 import { useSnackbar } from 'notistack';
 import useAuth from '../../hooks/useAuth';
@@ -15,14 +15,14 @@ export default function AuthWithSocial({ isLogin }) {
   const { googleOAuth, loginWithFaceBook, loginWithTwitter } = useAuth();
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleGoogleLoginSuccess = async (res) => {
-    const tokenId = res?.tokenId;
+  const handleGoogleLoginSuccess = async (credentialResponse) => {
+    const tokenId = credentialResponse.credential; // Google OAuth 2.0 returns a credential object with the tokenId in the 'credential' field
     await googleOAuth(tokenId);
   };
 
-  const handleGoogleLoginFailure = (err) => {
-    console.log('Google login failed', err);
-    const mess = t('auth.login-failed-with', { provider: 'Google', message: err.error });
+  const handleGoogleLoginFailure = () => {
+    console.log('Google login failed');
+    const mess = t('auth.login-failed-with', { provider: 'Google', message: 'Login failed' });
     enqueueSnackbar(mess, { variant: 'error' });
   };
 
@@ -43,10 +43,11 @@ export default function AuthWithSocial({ isLogin }) {
   };
 
   return (
-    <>
+    <GoogleOAuthProvider clientId="62945391421-7d6riokgvcokh2s80n86cgke51elvu9a.apps.googleusercontent.com">
       <Stack direction="row" spacing={2}>
         <GoogleLogin
-          clientId="235569401328-lib09fjkc10r16r6mbscljl4ulb5049q.apps.googleusercontent.com"
+          onSuccess={handleGoogleLoginSuccess}
+          onError={handleGoogleLoginFailure}
           render={(renderProps) => (
             <Button
               fullWidth
@@ -59,9 +60,6 @@ export default function AuthWithSocial({ isLogin }) {
               <GoogleIcon disabled={renderProps.disabled} />
             </Button>
           )}
-          onSuccess={handleGoogleLoginSuccess}
-          onFailure={handleGoogleLoginFailure}
-          cookiePolicy="single_host_origin"
         />
 
         <Button fullWidth size="large" color="inherit" variant="outlined" onClick={handleLoginFaceBook}>
@@ -80,6 +78,6 @@ export default function AuthWithSocial({ isLogin }) {
           </Typography>
         </Divider>
       )}
-    </>
+    </GoogleOAuthProvider>
   );
 }

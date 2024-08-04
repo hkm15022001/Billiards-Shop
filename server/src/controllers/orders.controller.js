@@ -1,6 +1,6 @@
 import ResponseUtils from '../utils/ResponseUtils.js';
 import orderService from '../services/order.service.js';
-import vnpayService from '../services/vnpay.service.js';
+// import vnpayService from '../services/vnpay.service.js';
 import firebaseService from '../services/firebase.service.js';
 import userBehaviorService from '../services/user-behavior.service.js';
 import constants from '../constants.js';
@@ -109,16 +109,16 @@ export const createByUser = async (req, res, next) => {
       );
 
       let paymentUrl = '';
-      if (req.body.paymentMethod === constants.ORDER.PAYMENT_METHOD.VNPAY) {
-        const apiUrl = `${req.protocol}://${req.get('host')}`
-        paymentUrl = await vnpayService.createPaymentUrl(
-          req.ipv4,
-          apiUrl,
-          clientUrl,
-          order._id.toString(),
-          order.total
-        );
-      }
+      // if (req.body.paymentMethod === constants.ORDER.PAYMENT_METHOD.VNPAY) {
+      //   const apiUrl = `${req.protocol}://${req.get('host')}`
+      //   paymentUrl = await vnpayService.createPaymentUrl(
+      //     req.ipv4,
+      //     apiUrl,
+      //     clientUrl,
+      //     order._id.toString(),
+      //     order.total
+      //   );
+      // }
 
       ResponseUtils.status201(
         res,
@@ -149,21 +149,22 @@ export const rePayOrder = async (req, res, next) => {
         res,
         'Order has been paid'
       );
-    } else if (order.paymentMethod === constants.ORDER.PAYMENT_METHOD.VNPAY) {
-      const apiUrl = `${req.protocol}://${req.get('host')}`
-      const paymentUrl = await vnpayService.createPaymentUrl(
-        req.ipv4,
-        apiUrl,
-        req.headers.origin,
-        order._id.toString(),
-        order.total
-      );
-      ResponseUtils.status200(
-        res,
-        'Create payment url success',
-        paymentUrl
-      );
-    }
+    } 
+    // else if (order.paymentMethod === constants.ORDER.PAYMENT_METHOD.VNPAY) {
+    //   const apiUrl = `${req.protocol}://${req.get('host')}`
+    //   const paymentUrl = await vnpayService.createPaymentUrl(
+    //     req.ipv4,
+    //     apiUrl,
+    //     req.headers.origin,
+    //     order._id.toString(),
+    //     order.total
+    //   );
+    //   ResponseUtils.status200(
+    //     res,
+    //     'Create payment url success',
+    //     paymentUrl
+    //   );
+    // }
   } catch (err) { next(err); }
 };
 

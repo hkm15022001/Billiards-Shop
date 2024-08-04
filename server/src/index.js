@@ -10,7 +10,7 @@ import LogUtils from './utils/LogUtils.js';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
-
+//avc
 const serverIp = Object.entries((Object.entries(os.networkInterfaces())[0]))?.[1]?.[1]?.filter(x => x.family === 'IPv4')?.[0]?.address || '';
 const serverPort = configs.port;
 const serverApi = http.createServer(app);

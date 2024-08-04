@@ -30,7 +30,9 @@ export const googleOAuth = async (req, res, next) => {
     const ipAddress = req.ipv4;
 
     const payload = await googleServices.verify(googleCredential, clientId);
+    
     if (!payload) {
+      console.log("failed")
       throw new Error('Google OAuth failed !');
     }
 
