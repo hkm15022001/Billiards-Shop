@@ -5,7 +5,7 @@ GET {{BASE_URL}}/{{RESOURCE}}
 
 ###
 
-@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJhMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDEiLCJpYXQiOjE2Mzc2NTg4OTUsImV4cCI6MTYzODI2MzY5NX0.YAoidwbFhi2-sJ2dwLVvcaaWZdLZuw34WQOq_UrUb80
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmIwNzYwZThhYTQ5ZTNiNWU5MmM2MmEiLCJpYXQiOjE3MjI4NzM4MDMsImV4cCI6MTcyMjg5NTQwM30.SUZbpYUvmx3BXWukq6iUcLq150wAZ-AjccM88SW0WSM
 
 POST {{BASE_URL}}/{{RESOURCE}}
 authorization: Bearer {{TOKEN}}
@@ -19,8 +19,8 @@ content-type: application/json
   "desc": "No desc",
   "warrantyPeriod": 12,
   "origin": "China",
-  "categoryId": "c00000000000000000000001",
-  "brandId": "b00000000000000000000001",
+  "categoryId": "66b0b2a58aa49e3b5e92c768",
+  "brandId": "66b10203cfafd3f016a34d55",
   "views": 13,
   "overSpecs": [
     {
