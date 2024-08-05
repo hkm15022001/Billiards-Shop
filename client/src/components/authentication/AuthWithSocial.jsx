@@ -1,6 +1,6 @@
 // material
 import { Stack, Button, Divider, Typography } from '@material-ui/core';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 // hooks
 import { useSnackbar } from 'notistack';
 import useAuth from '../../hooks/useAuth';
@@ -15,14 +15,15 @@ export default function AuthWithSocial({ isLogin }) {
   const { googleOAuth, loginWithFaceBook, loginWithTwitter } = useAuth();
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleGoogleLoginSuccess = async (credentialResponse) => {
-    const tokenId = credentialResponse.credential; // Google OAuth 2.0 returns a credential object with the tokenId in the 'credential' field
-    await googleOAuth(tokenId);
+  const handleGoogleLoginSuccess = async (tokenResponse) => {
+    console.log('Google login succes:', tokenResponse);
+    // const tokenId = tokenResponse;
+    await googleOAuth(tokenResponse);
   };
 
-  const handleGoogleLoginFailure = () => {
-    console.log('Google login failed');
-    const mess = t('auth.login-failed-with', { provider: 'Google', message: 'Login failed' });
+  const handleGoogleLoginFailure = (err) => {
+    console.log('Google login failed', err);
+    const mess = t('auth.login-failed-with', { provider: 'Google', message: err.message });
     enqueueSnackbar(mess, { variant: 'error' });
   };
 
