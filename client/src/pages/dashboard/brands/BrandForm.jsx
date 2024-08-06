@@ -154,7 +154,7 @@ export default function BrandForm({ currentId, open, setOpen }) {
     name: Yup.string()
       .trim()
       .required(t('dashboard.brands.name-validation'))
-      .min(6, t('dashboard.brands.name-validation-len'))
+      .min(3, t('dashboard.brands.name-validation-len'))
       .max(25, t('dashboard.brands.name-validation-len'))
   });
   const formik = useFormik({

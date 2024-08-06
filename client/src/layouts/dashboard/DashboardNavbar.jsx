@@ -50,7 +50,7 @@ export default function DashboardNavbar({ onOpenSidebar }) {
       <ToolbarStyle>
         <MHidden width="lgUp">
           <RouterLink to="/">
-            <Logo />
+            <Logo sx={{ width: 64, height: 64 }} />
           </RouterLink>
           <IconButton onClick={onOpenSidebar} sx={{ marginX: 1, color: 'text.primary' }}>
             <Icon icon={menu2Fill} />

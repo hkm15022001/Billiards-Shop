@@ -17,7 +17,7 @@ import ThemePrimaryColor from './components/ThemePrimaryColor';
 import NotistackProvider from './components/NotistackProvider';
 
 import { syncCart } from './redux/slices/cartSlice';
-import { sendTrackingData } from './redux/slices/userBehaviorSlice';
+// import { sendTrackingData } from './redux/slices/userBehaviorSlice';
 
 // eslint-disable-next-line prettier/prettier
 const isDevMode = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development');
@@ -28,12 +28,12 @@ export default function App() {
   const dispatch = useDispatch();
   const { isInitialized, isAuthenticated } = useAuth();
 
-  useInterval(
-    () => {
-      dispatch(sendTrackingData());
-    },
-    isDevMode ? 10 : 5
-  );
+  // useInterval(
+  //   () => {
+  //     dispatch(sendTrackingData());
+  //   },
+  //   isDevMode ? 10 : 5
+  // );
 
   useEffect(() => {
     if (isInitialized && isAuthenticated) {

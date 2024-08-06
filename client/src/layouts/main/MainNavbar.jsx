@@ -168,12 +168,13 @@ function MainNavbar({ categoryList, showCategoryMenu, cartItemsCount }) {
       >
         <ContainerStyle maxWidth="lg" style={{ height: 64 }}>
           <RouterLink to="/">
-            <MHidden width="mdUp">
+            {/* <MHidden width="mdUp">
               <Logo />
             </MHidden>
             <MHidden width="mdDown">
               <LogoFull />
-            </MHidden>
+            </MHidden> */}
+            <LogoFull />
           </RouterLink>
 
           <Box sx={{ mx: 3, flexGrow: 1 }}>

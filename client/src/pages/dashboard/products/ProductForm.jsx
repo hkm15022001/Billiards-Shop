@@ -69,6 +69,7 @@ const LabelStyle = styled(Typography)(({ theme }) => ({
 ProductForm.propTypes = {};
 
 export default function ProductForm() {
+  console.log('rerenderrrrrrrrrrrrrr');
   const { t } = useLocales();
   const navigate = useNavigate();
   const theme = useTheme();
@@ -486,35 +487,7 @@ export default function ProductForm() {
 
               <Card sx={{ p: 3 }}>
                 <Stack spacing={3}>
-                  <CountryPicker
-                    label={t('products.origin')}
-                    onChange={(event, label) => {
-                      setFieldValue('origin', label);
-                    }}
-                    required
-                    fullWidth
-                  />
-
-                  <Autocomplete
-                    required
-                    fullWidth
-                    options={brandsList.filter((x) => !x.isHide && x._id !== values.brand)}
-                    getOptionLabel={(option) => option.name}
-                    value={brandsList.find((c) => c.slug === values.brand)}
-                    onChange={(e, newValue) => {
-                      setFieldValue('brand', newValue?._id);
-                      setValidationBrand(false);
-                    }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label={t('products.brand')}
-                        margin="none"
-                        error={Boolean(validationBrand)}
-                      />
-                    )}
-                    error={Boolean(true)}
-                  />
+                  <TextField label={t('products.brand')} margin="none" />
                   <Link to={PATH_DASHBOARD.app.brands} color="inherit" component={RouterLink}>
                     <Typography
                       variant="inherit"

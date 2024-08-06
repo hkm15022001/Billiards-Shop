@@ -67,8 +67,7 @@ export const getAllProducts = async (req, res, next) => {
     const category = req.query.c || '';
     const brand = req.query.b || '';
     const search = decodeURI(req.query.search || '');
-
-    const fields = req.query.fields || '';
+        const fields = req.query.fields || '';
     const limit = parseInt(req.query.limit) || 10;
     const page = parseInt(req.query.page) || 1;
 
@@ -100,11 +99,13 @@ export const getAllProducts = async (req, res, next) => {
       }
     }
     if (search) {
+      // Disable full text search
       // filters.name = { $regex: search, $options: 'i' };
-      filters['$text'] = { $search: new RegExp(search, 'gmi') }
-      projection = { score: { $meta: "textScore" } }
-      sortBy = 'score';
-      sortType = { $meta: 'textScore' };
+      // filters['$text'] = { $search: search  }
+      filters.name = { $regex: new RegExp(search, 'i') };
+      // projection = { score: { $meta: "textScore" } }
+      // sortBy = 'score';
+      // sortType = { $meta: 'textScore' };
     }
 
     if (minPrice > 0) { filters.minPrice = { $gte: minPrice }; }

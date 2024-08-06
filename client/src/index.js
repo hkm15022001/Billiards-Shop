@@ -50,23 +50,21 @@ import reportWebVitals from './reportWebVitals';
 // ----------------------------------------------------------------------
 
 ReactDOM.render(
-  <StrictMode>
-    <HelmetProvider>
-      <ReduxProvider store={store}>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <SettingsProvider>
-            <BrowserRouter>
-              <AuthProvider>
-                <OrderProvider>
-                  <App />
-                </OrderProvider>
-              </AuthProvider>
-            </BrowserRouter>
-          </SettingsProvider>
-        </LocalizationProvider>
-      </ReduxProvider>
-    </HelmetProvider>
-  </StrictMode>,
+  <HelmetProvider>
+    <ReduxProvider store={store}>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <SettingsProvider>
+          <BrowserRouter>
+            <AuthProvider>
+              <OrderProvider>
+                <App />
+              </OrderProvider>
+            </AuthProvider>
+          </BrowserRouter>
+        </SettingsProvider>
+      </LocalizationProvider>
+    </ReduxProvider>
+  </HelmetProvider>,
   document.getElementById('root')
 );
 

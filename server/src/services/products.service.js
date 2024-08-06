@@ -420,7 +420,9 @@ async function createProduct(data) {
 
   categoryService.incCountProduct(categoryId);
   brandService.incCountProduct(brandId);
-  return product.save().then(p => p.populate(POPULATE_OPTS).lean().exec());
+  return product.save()
+  .then(p => p.populate(POPULATE_OPTS)) // Điền dữ liệu tham chiếu
+  .then(populatedProduct => populatedProduct.toObject());
 
   // const newProduct = new Product({
   //   _id: new mongoose.Types.ObjectId(),

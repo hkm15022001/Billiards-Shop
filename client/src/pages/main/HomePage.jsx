@@ -45,9 +45,9 @@ export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    dispatch(getProductForYou(user?._id || ''));
-  }, [dispatch, user?._id]);
+  // useEffect(() => {
+  //   dispatch(getProductForYou(user?._id || ''));
+  // }, [dispatch, user?._id]);
 
   useEffect(() => {
     dispatch(getAllProducts('', '', '', page, LIMIT));
@@ -90,7 +90,7 @@ export default function HomePage() {
                   </Box>
                 </CardContent>
               </Card>
-              <ProductCarousel products={productForYou.list} isLoading={productForYou.isLoading} />
+              <ProductCarousel products={products} isLoading={productForYou.isLoading} />
             </Box>
 
             <Box>
