@@ -19,7 +19,7 @@ import {
 
 export default function PageStatistic() {
   return (
-    <Page title="General: E-commerce | HK-Mobile">
+    <Page title="General: Hữu Nghĩa Billiards">
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
