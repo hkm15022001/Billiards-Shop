@@ -466,7 +466,7 @@ export default {
     'specifications-value': 'Giá trị',
     thumbnail: 'Hình thu nhỏ',
     pictures: 'Thêm hình',
-    'pictures-note': 'Note: must upload more pictures before saving.',
+    'pictures-note': 'Chú ý: Phải upload tất cả các ảnh dưới trước khi bấm nút Thêm Sản Phẩm.',
     video: 'Link video',
     brand: 'Thương hiệu',
     'brand-add': 'Thêm thương hiệu mới',

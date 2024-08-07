@@ -487,7 +487,26 @@ export default function ProductForm() {
 
               <Card sx={{ p: 3 }}>
                 <Stack spacing={3}>
-                  <TextField label={t('products.brand')} margin="none" />
+                  {/* <TextField label={t('products.brand')} margin="none" />
+                   */}
+                  <Autocomplete
+                    fullWidth
+                    options={brandsList.filter((x) => !x.isHide && x._id !== values?.brand)}
+                    getOptionLabel={(option) => option.name}
+                    value={brandsList.find((c) => c.slug === values?.brand)}
+                    onChange={(e, newValue) => {
+                      setFieldValue('brand', newValue?._id);
+                      setValidationBrand(false);
+                    }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label={t('products.brand')}
+                        margin="none"
+                        error={Boolean(validationBrand)}
+                      />
+                    )}
+                  />
                   <Link to={PATH_DASHBOARD.app.brands} color="inherit" component={RouterLink}>
                     <Typography
                       variant="inherit"
@@ -523,7 +542,7 @@ export default function ProductForm() {
                       />
                     )}
                   />
-                  <Link to={PATH_DASHBOARD.app.brands} color="inherit" component={RouterLink}>
+                  <Link to={PATH_DASHBOARD.app.categories} color="inherit" component={RouterLink}>
                     <Typography
                       variant="inherit"
                       sx={{

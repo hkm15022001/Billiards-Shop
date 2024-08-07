@@ -131,7 +131,6 @@ export default function ProductVariant() {
 
   const handleCreateDone = () => {
     setOpenForm(false);
-    variants.length += 1;
   };
 
   return (

@@ -28,6 +28,7 @@ import { allowImageMineTypes } from '../../../constants/imageMineTypes';
 import { firebaseUploadMultiple, firebaseUploadSingle } from '../../../helper/firebaseHelper';
 import { createProductVariant, getProductById, updateProductVariant } from '../../../redux/slices/productSlice';
 
+
 const LabelStyle = styled(Typography)(({ theme }) => ({
   ...theme.typography.subtitle2,
   color: theme.palette.text.secondary,
@@ -308,7 +309,7 @@ export default function ProductVariantForm({ currentVariant, currentProductId, o
     }
   });
 
-  const { errors, values, touched, handleSubmit, setFieldValue, getFieldProps } = formik;
+  const { errors, values, touched, handleSubmit, setFieldValue, getFieldProps   } = formik;
 
   const handleDrop = useCallback(
     (acceptedFiles) => {
@@ -338,7 +339,7 @@ export default function ProductVariantForm({ currentVariant, currentProductId, o
     for (let i = 0; i < currentProduct?.variants.length; i++) {
       if (currentProduct?.variants[i].sku === values.sku && !currentVariant) {
         enqueueSnackbar('Sku phải là duy nhất', {
-          variant: 'error'
+          variant: 'error',
         });
         return false;
       }

@@ -11,20 +11,15 @@ import { CarouselControlsPaging1 } from '../carousel/controls';
 
 // ----------------------------------------------------------------------
 
-const PRODUCTS = [
-  'IPhone 13 Promax',
-  'Air Pod Pro',
-  'Samsung Galaxy Z Flip',
-  'Apple watch series 7',
-  'Macbook Air',
-  'Oppo find X'
-].map((product, index) => {
-  const setIndex = index + 1;
-  return {
-    name: product,
-    image: mockImgProduct(setIndex)
-  };
-});
+const PRODUCTS = ['Bàn King Winner', 'Giá Để Cơ', 'Kkk imperial đen huyền bí', 'Nỉ CPBA compe', 'Aileex 1 khúc'].map(
+  (product, index) => {
+    const setIndex = index + 1;
+    return {
+      name: product,
+      image: mockImgProduct(setIndex)
+    };
+  }
+);
 
 const CarouselImgStyle = styled('img')(({ theme }) => ({
   width: '100%',

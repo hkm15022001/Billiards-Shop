@@ -15,7 +15,7 @@ import useLocales from '../../hooks/useLocales';
 // ----------------------------------------------------------------------
 
 const SOCIALS = [
-  { name: 'FaceBook', icon: facebookFill, url: 'https://www.facebook.com/hkmobileshop' },
+  { name: 'FaceBook', icon: facebookFill, url: 'https://www.facebook.com/huunghiahoang268' },
   { name: 'Google', icon: googleFill, url: 'https://www.google.com/' },
   { name: 'Linkedin', icon: linkedinFill, url: 'https://www.linkedin.com/' },
   { name: 'Twitter', icon: twitterFill, url: 'https://www.twitter.com/' }
@@ -35,7 +35,7 @@ export default function MainFooter() {
     {
       headline: 'VỀ CHÚNG TÔI',
       children: [
-        { name: 'Khách hàng đánh gia', href: '#' },
+        { name: 'Khách hàng đánh giá', href: '#' },
         { name: 'Liên hệ', href: '#' },
         { name: 'Hỏi đáp', href: '#' }
       ]
@@ -135,7 +135,7 @@ export default function MainFooter() {
             textAlign: { xs: 'center', md: 'left' }
           }}
         >
-          &copy; 2021 HK Mobile. All rights reserved
+          &copy; 2024 Hữu Nghĩa Billiards. All rights reserved
         </Typography>
       </Container>
     </RootStyle>

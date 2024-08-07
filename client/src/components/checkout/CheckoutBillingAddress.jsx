@@ -36,7 +36,7 @@ import { MHidden } from '../@material-extend';
 import AddressPicker from '../location/AddressPicker';
 import AddressForm from '../account/AddressForm';
 import CheckoutSummary from './CheckoutSummary';
-// import CheckoutDelivery from './CheckoutDelivery';
+import CheckoutDelivery from './CheckoutDelivery';
 // other
 import * as cartHelper from '../../helper/localStorageHelper';
 // actions
@@ -380,7 +380,7 @@ export default function CheckoutBillingAddress() {
 
   return (
     <>
-      {(!process.env.NODE_ENV || process.env.NODE_ENV === 'development') && errors && <p>{JSON.stringify(errors)}</p>}
+      {/* {(!process.env.NODE_ENV || process.env.NODE_ENV === 'development') && errors && <p>{JSON.stringify(errors)}</p>} */}
       <FormikProvider value={formik} noValidate onSubmit={handleSubmit}>
         <Form autoComplete="off">
           <Grid container spacing={3}>
