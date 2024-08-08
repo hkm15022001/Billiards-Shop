@@ -66,7 +66,7 @@ export default function MainLayout() {
     onSuccess: (user) => console.log('Google One Tap Login success', user),
     onFailure: (error) => console.error('Google One Tap Login failure', error),
     googleAccountConfigs: {
-      client_id: '235569401328-lib09fjkc10r16r6mbscljl4ulb5049q.apps.googleusercontent.com',
+      client_id: '62945391421-7d6riokgvcokh2s80n86cgke51elvu9a.apps.googleusercontent.com',
       callback: async (data) => {
         console.log('Google One Tap Login callback', data);
         const { credential } = data;

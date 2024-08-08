@@ -1,24 +1,24 @@
-version: '3.9'
+version: '3.3'
 
 services:
   server:
-    image: quockhanhtn/mern-ecommerce:server
-    container_name: mern-ecommerce-server-production
-    command: npm run start
+    image: billiards-server:v1
+    container_name: server-production
+    # command: npm run start/
     ports:
       - "3001:3001"
-    env_file: ./server/.env
+    # env_file: ./server/.env
     networks:
       - app-network
 
   client:
-    image: quockhanhtn/mern-ecommerce:client
-    container_name: mern-ecommerce-client-production
-    command: serve -s build -l 3000
+    image: billiards-client:v2
+    container_name: client-production
+    # command: serve -s build -l 3000
     depends_on:
       - server
     ports:
-      - "3000:3000"
+      - "80:80"
     networks:
       - app-network
 

@@ -1,32 +1,31 @@
-# Dockerfile for client
-
+# Stage 1: Build React app
 ARG NODE_IMAGE=node:14.15.3-alpine3.12
 
-# Stage 1: Build React app
 FROM $NODE_IMAGE AS BUILD_IMAGE
 WORKDIR /usr/app
 
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-## Install dependencies
+# Install dependencies
 RUN npm ci
 
-## Copy local files to app and build react app
+# Copy all other files and build the React app
 COPY . .
 RUN npm run build
 
 
-# Stage 2
-FROM $NODE_IMAGE
-WORKDIR /usr/app
+# Stage 2: Serve with Nginx
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
 
-## copy from build image
-COPY --from=BUILD_IMAGE /usr/app/build ./build
+# Copy the build output from the previous stage
+COPY --from=BUILD_IMAGE /usr/app/build .
 
-## Install serve
-RUN npm install -g serve
+# Copy custom Nginx configuration, if you have one
+COPY nginx.conf /etc/nginx/nginx.conf
 
-## export
-EXPOSE 3000
+# Expose port 80 for the Nginx web server
+EXPOSE 80
 
-CMD ["serve","-d build", "-l 3000"]
+# Nginx will automatically start with the container
