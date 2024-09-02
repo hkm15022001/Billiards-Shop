@@ -305,7 +305,7 @@ export default function ProductForm() {
       return item;
     });
     if (specifications.length >= 0 && specifications[0].name !== '') {
-      product.addSpecifications = specifications;
+      product.overSpecs = specifications;
     }
     return product;
   };

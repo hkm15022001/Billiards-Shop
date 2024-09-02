@@ -9,8 +9,7 @@ const { Schema } = mongoose;
 
 const specificationSchema = new Schema({
   name: { type: String, trim: true, required: true },
-  key: { type: String, slug: "name", required: false },
-  values: [{ type: String, trim: true, required: true }]
+  value: { type: String, trim: true, required: true }
 }, { timestamps: false, versionKey: false, id: false, _id: false });
 
 const specificationDetailSchema = new Schema({

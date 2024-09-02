@@ -155,7 +155,7 @@ function MainNavbar({ categoryList, showCategoryMenu, cartItemsCount }) {
   ];
 
   return (
-    <AppBar color="default" sx={{ boxShadow: 0 }}>
+    <AppBar color="default" sx={{ boxShadow: 0, height: 186}}>
       <ToolbarStyle
         disableGutters
         sx={(theme) => ({
@@ -166,7 +166,7 @@ function MainNavbar({ categoryList, showCategoryMenu, cartItemsCount }) {
           ...(isOffset && { bgcolor: 'background.default', height: { md: APP_BAR_DESKTOP - 16 } })
         })}
       >
-        <ContainerStyle maxWidth="lg" style={{ height: 64 }}>
+        <ContainerStyle maxWidth="lg" style={{ height: 200 }}>
           <RouterLink to="/">
             {/* <MHidden width="mdUp">
               <Logo />

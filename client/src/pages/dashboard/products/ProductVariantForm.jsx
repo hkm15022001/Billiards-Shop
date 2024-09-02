@@ -58,17 +58,17 @@ export default function ProductVariantForm({ currentVariant, currentProductId, o
 
   useEffect(() => {
     let id = 1;
-    currentVariant?.addSpecifications?.map((item) => {
+    currentVariant?.overSpecs?.map((item) => {
       delete item.key;
       item.id = id;
       id += 1;
       return item;
     });
-    if (currentVariant?.addSpecifications?.length > 0) {
-      setSpecifications(currentVariant?.addSpecifications);
+    if (currentVariant?.overSpecs?.length > 0) {
+      setSpecifications(currentVariant?.overSpecs);
     }
     setUploadImage(currentVariant?.thumbnail);
-  }, [currentVariant?.addSpecifications]);
+  }, [currentVariant?.overSpecs]);
 
   useEffect(() => {
     dispatch(getProductById(currentProductId));
@@ -277,7 +277,7 @@ export default function ProductVariantForm({ currentVariant, currentProductId, o
       return item;
     });
     if (specifications.length >= 0 && specifications[0].name !== '') {
-      product.addSpecifications = specifications;
+      product.overSpecs = specifications;
     }
     return product;
   };

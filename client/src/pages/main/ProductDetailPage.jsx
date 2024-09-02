@@ -184,21 +184,6 @@ export default function ProductDetailPage() {
           </Grid>
         </Card>
 
-        <Grid container sx={{ my: 4 }}>
-          {productMoreInfos.map((item) => (
-            <Grid item xs={12} md={4} key={item.title}>
-              <Box sx={{ my: 2, mx: 'auto', maxWidth: 280, textAlign: 'center' }}>
-                <IconWrapperStyle>
-                  <Icon icon={item.icon} width={36} height={36} />
-                </IconWrapperStyle>
-                <Typography variant="subtitle1" gutterBottom>
-                  {item.title}
-                </Typography>
-                <Typography sx={{ color: 'text.secondary' }}>{item.description}</Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
 
         {/* <Grid container>
           <Grid item xs={12} md={12} lg={12}>
@@ -232,7 +217,8 @@ export default function ProductDetailPage() {
             </Box>
             <Divider />
             <TabPanel value="0">
-              <ProductSpecification overSpecs={product?.overSpecs} detailSpecs={product?.detailSpecs} />
+              <ProductSpecification overSpecs={product?.overSpecs} />  
+              {/* Before <ProductSpecification overSpecs={product?.overSpecs} detailSpecs={product?.detailSpecs} /> edited by minhhk1  */}
             </TabPanel>
             <TabPanel value="1">
               <SimpleBarReact style={{ maxHeight: '600px' }}>
@@ -259,6 +245,22 @@ export default function ProductDetailPage() {
             </TabPanel>
           </TabContext>
         </Card>
+
+        <Grid container sx={{ my: 4 }}>
+          {productMoreInfos.map((item) => (
+            <Grid item xs={12} md={4} key={item.title}>
+              <Box sx={{ my: 2, mx: 'auto', maxWidth: 280, textAlign: 'center' }}>
+                <IconWrapperStyle>
+                  <Icon icon={item.icon} width={36} height={36} />
+                </IconWrapperStyle>
+                <Typography variant="subtitle1" gutterBottom>
+                  {item.title}
+                </Typography>
+                <Typography sx={{ color: 'text.secondary' }}>{item.description}</Typography>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography variant="h5" component="h2" sx={{ padding: 0, mt: 5, mb: 2 }}>

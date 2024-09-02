@@ -50,10 +50,9 @@ export default function MainFooter() {
     {
       headline: 'Tổng đài hỗ trợ (Miễn phí gọi)',
       children: [
-        { name: 'Gọi mua: 1800.xxxx (7:30 - 22:00)' },
-        { name: 'Kỹ thuật: 1800.xyxy (7:30 - 22:00)' },
-        { name: 'Khiếu nại: 1800.xzxz (8:00 - 21:30)' },
-        { name: 'Bảo hành: 1800.xyzt (8:00 - 21:00)' }
+        { name: 'Gọi mua: 0949.868.345 (7:30 - 22:00)' },
+        { name: 'Khiếu nại: 0949.868.345 (8:00 - 21:30)' },
+        { name: 'Bảo hành: 0949.868.345 (8:00 - 21:00)' }
       ]
     }
   ];
@@ -69,12 +68,15 @@ export default function MainFooter() {
         >
           <Grid item xs={12} sx={{ mb: 3 }}>
             <ScrollLink to="move_top" spy smooth>
-              <Logo sx={{ mx: { xs: 'auto', md: 'inherit' } }} />
+              <Logo sx={{ mx: { xs: 'auto', md: 'inherit', width: 80, height: 80}}} />
             </ScrollLink>
           </Grid>
           <Grid item xs={8} md={3}>
             <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              Success or failure in business depends more on attitude in thinking than in ability to think.
+              <span style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Hữu Nghĩa Billiards</span>
+              <br />
+              <span>ĐẠI LÝ PHÂN PHỐI BÀN BI-A KKKING CHÍNH HÃNG SỐ 1 TẠI VIỆT NAM</span>
+              
             </Typography>
 
             <Stack
