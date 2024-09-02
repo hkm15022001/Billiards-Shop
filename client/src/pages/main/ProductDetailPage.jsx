@@ -103,7 +103,14 @@ export default function ProductDetailPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product?._id]);
-
+  useEffect(() => {
+    // Set the default tab based on product.overSpecs
+    if (product?.overSpecs?.length > 0) {
+      setTab('1');
+    } else {
+      setTab('0');
+    }
+  }, []);
   useInterval(
     () => {
       if (product?._id) {
