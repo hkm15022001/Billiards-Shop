@@ -92,7 +92,7 @@ function NavbarItem({ badgeContent, text, icon, color, ...other }) {
 
   return (
     <>
-      <MHidden width="mdUp">
+      <MHidden className="test1" width="mdUp" sx={{ height: '112' }}>
         <IconButton color={color} {...other}>
           <Icon icon={icon} />
         </IconButton>
@@ -155,7 +155,7 @@ function MainNavbar({ categoryList, showCategoryMenu, cartItemsCount }) {
   ];
 
   return (
-    <AppBar color="default" sx={{ boxShadow: 0, height: 186}}>
+    <AppBar color="default" sx={{ boxShadow: 0, height: 99 }}>
       <ToolbarStyle
         disableGutters
         sx={(theme) => ({

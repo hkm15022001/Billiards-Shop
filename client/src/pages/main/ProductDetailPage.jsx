@@ -106,11 +106,10 @@ export default function ProductDetailPage() {
   useEffect(() => {
     // Set the default tab based on product.overSpecs
     if (product?.overSpecs?.length > 0) {
-      setTab('1');
-    } else {
       setTab('0');
+      console.log(tab)
     }
-  }, []);
+  }, [[product?._id]]);
   useInterval(
     () => {
       if (product?._id) {

@@ -14,7 +14,7 @@ import Label from '../../components/Label';
 import { BrandCarousel } from '../../components/brand';
 import { DiscountCarousel } from '../../components/discount';
 import { ProductCarousel, ProductList } from '../../components/e-commerce';
-
+import Banner from '../../components/banner';
 // ----------------------------------------------------------------------
 
 const ContentStyle = styled('div')(({ theme }) => ({
@@ -63,12 +63,10 @@ export default function HomePage() {
 
   return (
     <Page title={t('home.page-title')} id="move_top">
-      <ContentStyle>
+      <Banner  altText="Welcome Banner" />
+      <ContentStyle >
         <Container maxWidth="lg">
           <Stack spacing={5}>
-            {/* Discount carousel */}
-            <DiscountCarousel discounts={discountList} isLoading={isLoadingDiscount} />
-
             {/* Brand List carousel */}
             <Card>
               <CardHeader title={t('dashboard.brands.heading').toUpperCase()} />
@@ -93,6 +91,8 @@ export default function HomePage() {
               <ProductCarousel products={products} isLoading={productForYou.isLoading} />
             </Box>
 
+            {/* Discount carousel */}
+            <DiscountCarousel discounts={discountList} isLoading={isLoadingDiscount} />
             <Box>
               <Card sx={{ marginBottom: 1.5, padding: 3 }}>
                 <CardContent sx={{ padding: 0, '&:last-child': { paddingBottom: 0 } }}>
