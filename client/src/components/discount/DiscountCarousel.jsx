@@ -66,7 +66,7 @@ function CarouselItem({ item, isActive }) {
                 {desc}
               </Typography>
             )}
-            <Typography variant="body2" noWrap gutterBottom>
+            {/* <Typography variant="body2" noWrap gutterBottom>
               Mã&nbsp;
               <Typography color="primary" variant="subtitle1" component="span">
                 {code}
@@ -79,7 +79,7 @@ function CarouselItem({ item, isActive }) {
               {minimumTotal < 1000
                 ? ' cho tất cả đơn hàng'
                 : ` cho đơn hàng từ ${fCurrency(minimumTotal, currentLang.value)}`}
-            </Typography>
+            </Typography> */}
           </motion.div>
         </MotionContainer>
       </CardContent>

@@ -155,7 +155,7 @@ function MainNavbar({ categoryList, showCategoryMenu, cartItemsCount }) {
   ];
 
   return (
-    <AppBar color="default" sx={{ boxShadow: 0, height: 99 }}>
+    <AppBar color="default" sx={{ boxShadow: 0, height: 115 }}>
       <ToolbarStyle
         disableGutters
         sx={(theme) => ({

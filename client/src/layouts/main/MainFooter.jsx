@@ -68,7 +68,7 @@ export default function MainFooter() {
         >
           <Grid item xs={12} sx={{ mb: 3 }}>
             <ScrollLink to="move_top" spy smooth>
-              <Logo sx={{ mx: { xs: 'auto', md: 'inherit', width: 80, height: 80}}} />
+              <Logo sx={{ mx: { xs: 'auto', md: 'inherit', width: 160, height: 160 } }} />
             </ScrollLink>
           </Grid>
           <Grid item xs={8} md={3}>
@@ -76,7 +76,9 @@ export default function MainFooter() {
               <span style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Hữu Nghĩa Billiards</span>
               <br />
               <span>ĐẠI LÝ PHÂN PHỐI BÀN BI-A KKKING CHÍNH HÃNG SỐ 1 TẠI VIỆT NAM</span>
-              
+              <br />
+              <span>LẠC ĐA0 - VĂN LÂM - HƯNG YÊN</span>
+
             </Typography>
 
             <Stack
